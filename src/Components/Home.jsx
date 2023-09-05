@@ -44,9 +44,6 @@ const Home = () => {
             Hi, I'm Brian Chebon!
           </span>
           <span>
-            <span onClick={handleChange}>
-              👋🏾
-            </span>
             <span ref={textContent} style={{ display: 'none' }}>
               Tap again
             </span>
