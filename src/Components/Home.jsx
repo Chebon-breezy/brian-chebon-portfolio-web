@@ -41,7 +41,7 @@ const Home = () => {
       <div className="home-text">
         <h1>
           <span className='gradientText'>
-            Hi, I'm Lorem!
+            Hi, I'm Brian Chebon!
           </span>
           <span>
             <span onClick={handleChange}>
@@ -56,7 +56,7 @@ const Home = () => {
           cursorColor="#1da1f2"
           multiText={[
             'Web Developer',
-            "Don't Forget to Scroll"
+            "Front-End Developer"
           ]}
           multiTextLoop={true}
           multiTextDelay={1500}
