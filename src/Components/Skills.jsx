@@ -2,7 +2,7 @@ import React from 'react'
 
 import '../styles/Skills.css'
 
-import { SiJavascript, SiHtml5, SiCss3, SiReact, SiNodedotjs, SiFigma, SiMongodb, SiFirebase, SiTypescript, SiNextdotjs } from 'react-icons/si'
+import { SiJavascript, SiHtml5, SiCss3, SiReact, SiNodedotjs, SiFigma, SiTailwindcss, SiFirebase, SiTypescript, SiNextdotjs } from 'react-icons/si'
 
 const Skills = () => {
   return (
@@ -42,8 +42,8 @@ const Skills = () => {
           <p>Figma</p>
         </div>
         <div className="mon">
-          <SiMongodb />
-          <p>MongoDB</p>
+          <SiTailwindcss />
+          <p>Tailwind CSS</p>
         </div>
         <div className="fire">
           <SiFirebase />

@@ -19,6 +19,14 @@ const Projects = () => {
       githubLink: 'https://github.com/Chebon-breezy/Event-App',
       techs: ['JavaScript', 'Next.js', 'HTML' , 'CSS'],
       isOpenSource: true
+    },
+    three: {
+      name: 'Landing Page',
+      desc: 'Landing Page – a visually captivating, one-page masterpiece that combines JavaScript, HTML, and CSS to create an engaging user experience. Tailwind CSS adds a touch of style and modernity to the design, while Masonry Grid and Fancybox CSS enhance image presentation and interactivity.',
+      liveLink: 'https://adrespect-page-bon.netlify.app',
+      githubLink: 'https://github.com/Chebon-breezy/adrespect-page',
+      techs: ['JavaScript', 'Tailwind CSS', 'HTML' , 'CSS', 'Masonry JS ', 'Fancybox CSS'],
+      isOpenSource: true
     }
   }
   return (
@@ -27,6 +35,7 @@ const Projects = () => {
       <div>
         <Project info={projectsInfo.one} />
         <Project info={projectsInfo.two} />
+        <Project info={projectsInfo.three} />
       </div>
     </div>
   )
