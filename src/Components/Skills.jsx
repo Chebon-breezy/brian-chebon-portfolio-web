@@ -2,7 +2,7 @@ import React from 'react'
 
 import '../styles/Skills.css'
 
-import { SiJavascript, SiHtml5, SiCss3, SiReact, SiNodedotjs, SiFigma, SiTailwindcss, SiFirebase, SiTypescript, SiNextdotjs } from 'react-icons/si'
+import { SiJavascript, SiHtml5, SiCss3, SiReact, SiNodedotjs, SiFigma, SiTailwindcss, SiFirebase, SiTypescript, SiNextdotjs, SiGit } from 'react-icons/si'
 
 const Skills = () => {
   return (
@@ -48,6 +48,10 @@ const Skills = () => {
         <div className="fire">
           <SiFirebase />
           <p>Firebase</p>
+        </div>
+        <div className="git">
+          <SiGit />
+          <p>Git</p>
         </div>
       </div>
     </div>
