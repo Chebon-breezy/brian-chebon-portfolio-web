@@ -58,6 +58,10 @@
 	overflow: hidden;
 }
 
+.mail {
+	--social-main-color: rgb(221, 20, 13);
+}
+
 .insta {
 	--social-main-color: rgb(193, 53, 132);
 }
