@@ -14,7 +14,7 @@ const Home = () => {
   const textContent = useRef();
   const handleDownload = () => {
     saveAs(
-      "google drive url",
+      "https://drive.google.com/file/d/1TuW_I8XBHitCxCtnzeR4fvLB47X-G6Ur/view?usp=sharing",
       "Resume.pdf"
     )
   }
