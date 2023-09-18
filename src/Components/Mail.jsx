@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react'
-import '../styles/Mail.css'
+import React, { useState, useRef, useEffect } from 'react';
+import '../styles/Mail.css';
 
-import emailjs from '@emailjs/browser';
+import emailjs from 'emailjs-com';
 
 const Mail = () => {
   const radio = useRef();
@@ -16,21 +16,20 @@ const Mail = () => {
     email: false,
     rest: false
   }
-  const error = useRef()
-  const formResMsg = useRef()
+  const error = useRef();
+  const formResMsg = useRef();
 
   const validation = (email, name, message, subject) => {
-    const acceptedEmail = ['gmail.com', 'yahoo.com', 'yahoo.co.in', 'outlook.com', 'protonmail.com', 'aol.com', 'icloud.com', 'me.com', 'mac.com', 'gmx.com', 'hey.com']
+    const acceptedEmail = ['gmail.com', 'yahoo.com', 'yahoo.co.in', 'outlook.com', 'protonmail.com', 'aol.com', 'icloud.com', 'me.com', 'mac.com', 'gmx.com', 'hey.com'];
     if (email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
       acceptedEmail.includes(email.split('@')[1]) ?
-        valid.email = true : valid.email = false
+        valid.email = true : valid.email = false;
     } else {
       valid.email = false;
     }
 
     if (name !== '' && subject !== '' && message.length > 100) {
       valid.rest = true;
-      console.log('here')
     } else {
       valid.rest = false;
     }
@@ -42,44 +41,47 @@ const Mail = () => {
       name: '',
       email: '',
       message: ''
-    })
+    });
   }
 
   const handleClick = () => {
     validation(toSend.email, toSend.name, toSend.message, toSend.subject);
-    const condition = Object.values(valid).every((value) => value === true)
+    const condition = Object.values(valid).every((value) => value === true);
     if (!condition) {
-      error.current.style.display = 'block'
+      error.current.style.display = 'block';
     } else {
-      // Using email.js to send emails https://www.emailjs.com/docs/sdk/installation/
-      // use .env to store ids and keys from email.js
-      // emailjs.send(serviceID, templateID, toSend, publicKey)
-      //   .then((response) => {
-      //     formResMsg.current.innerText = "Message sent..."
-      //     reset();
-      //   }, (err) => {
-      //     formResMsg.current.innerText = "Failed... " + err.text
-      // });
-      // error.current.style.display = 'none'
+      // Using email.js to send emails
+      const serviceID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+      const templateID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+      const publicKEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
+      emailjs.send(serviceID, templateID, toSend, publicKEY)
+        .then((response) => {
+          formResMsg.current.innerText = "Message sent...";
+          reset();
+        })
+        .catch((err) => {
+          formResMsg.current.innerText = "Failed... " + err.text;
+        });
+      error.current.style.display = 'none';
     }
   }
-
 
   const handleChange = (e) => {
     setToSend({ ...toSend, [e.target.name]: e.target.value });
   };
 
   useEffect(() => {
-    const arrayOfSub = ['work', 'chat', 'collaboration']
+    const arrayOfSub = ['work', 'chat', 'collaboration'];
     if (toSend.subject === '') {
-      setIsDisabled(false)
+      setIsDisabled(false);
     } else {
       if (!(arrayOfSub.includes(toSend.subject))) {
         radio.current.checked = false;
-        setIsDisabled(true)
+        setIsDisabled(true);
       }
     }
-  }, [toSend.subject])
+  }, [toSend.subject]);
 
   return (
     <div className='mail' id='mail'>
@@ -142,13 +144,13 @@ const Mail = () => {
             <label htmlFor="message">Message</label>
             <textarea name="message" cols="30" rows="10" value={toSend.message} onChange={handleChange}></textarea>
           </div>
-          <p style={{ color: 'red !important', display: 'none' }} ref={error}>Something is missing</p>
-          <p style={{ color: 'red !important' }} ref={formResMsg}></p>
+          <p style={{ color: 'red' }} ref={error}>Something is missing</p>
+          <p style={{ color: 'red' }} ref={formResMsg}></p>
           <div className='btn' onClick={handleClick}>Send Message</div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Mail
+export default Mail;
